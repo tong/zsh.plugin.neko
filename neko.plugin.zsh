@@ -1,6 +1,9 @@
 
-compctl -g "*.n" neko
-compctl -g "*.nml" nekoml
+__neko_complete() {
+	_arguments -s -w \
+		'*:file:_files -g "*.n"'
+}
+compdef __neko_complete neko
 
 __nekoc_complete() {
 	if (( CURRENT == 2 )); then
@@ -30,4 +33,4 @@ __nekotools_complete() {
 }
 compdef __nekotools_complete nekotools
 
-#alias n='neko'
+compctl -g "*.nml" nekoml
